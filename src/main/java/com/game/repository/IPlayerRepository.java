@@ -5,6 +5,7 @@ import com.game.entity.Player;
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("UnusedReturnValue")
 public interface IPlayerRepository {
     List<Player> getAll(int pageNumber, int pageSize);
 
