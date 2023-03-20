@@ -15,6 +15,7 @@ import java.util.List;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+@SuppressWarnings("deprecation")
 @Service
 public class PlayerService {
     private final IPlayerRepository playerRepository;
