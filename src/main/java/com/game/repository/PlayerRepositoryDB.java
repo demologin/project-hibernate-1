@@ -39,11 +39,9 @@ public class PlayerRepositoryDB implements IPlayerRepository {
     @Override
     public List<Player> getAll(int pageNumber, int pageSize) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
             NativeQuery<Player> query = session.createNativeQuery("select * from rpg.player", Player.class);
             query.setFirstResult(pageNumber * pageSize);
             query.setMaxResults(pageSize);
-            tx.commit();
             return query.list();
         }
     }
@@ -51,49 +49,60 @@ public class PlayerRepositoryDB implements IPlayerRepository {
     @Override
     public int getAllCount() {
         try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
             Query<Long> playerGetaAllCount = session.createNamedQuery("player_getaAllCount", Long.class);
-            tx.commit();
             return Math.toIntExact(playerGetaAllCount.uniqueResult());
         }
     }
 
     @Override
     public Player save(Player player) {
-        try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        try {
             session.save(player);
             tx.commit();
-            return player;
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            session.close();
         }
+        return player;
     }
 
     @Override
     public Player update(Player player) {
-        try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        try {
             session.update(player);
             tx.commit();
-            return player;
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            session.close();
         }
+        return player;
     }
 
     @Override
     public Optional<Player> findById(long id) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
             Player player = session.find(Player.class, id);
-            tx.commit();
             return Optional.of(player);
         }
     }
 
     @Override
     public void delete(Player player) {
-        try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        try {
             session.remove(player);
             tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            session.close();
         }
     }
 
