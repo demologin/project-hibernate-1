@@ -114,13 +114,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>p6spy</groupId>
-			<artifactId>p6spy</artifactId>
-			<version>3.9.1</version>
-		</dependency>
-
-
-		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 			<version>4.27.0</version>
