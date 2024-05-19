@@ -1,5 +1,6 @@
 package com.game.controller;
 
+import com.game.config.LiquibaseRunner;
 import com.game.entity.Player;
 import com.game.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class PlayerController {
 
     public PlayerController(@Autowired PlayerService playerService) {
         this.playerService = playerService;
+        LiquibaseRunner.init();
     }
 
     @GetMapping()

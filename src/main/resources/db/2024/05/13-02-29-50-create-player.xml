@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="13-02-29-50-create-player" author="aboyarinov">
+        <createTable tableName="player">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="race" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profession" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthday" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="banned" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="level" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    
+</databaseChangeLog>
