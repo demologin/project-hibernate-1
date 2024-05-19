@@ -10,7 +10,6 @@ import java.util.Date;
 @Table(schema = "rpg", name = "player")
 @NamedQuery(name = "player_playersCount", query = "select count(p) from Player p")
 public class Player {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
