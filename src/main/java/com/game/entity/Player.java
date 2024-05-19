@@ -1,23 +1,39 @@
 package com.game.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import jakarta.persistence.*;
+import jdk.jfr.BooleanFlag;
+
 import java.util.Date;
 
 
+@Entity
+@Table(name = "player")
 public class Player {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
+    @Column(name = "name", nullable = false, length = 12)
     private String name;
 
+    @Column(name = "title", nullable = false, length = 30)
     private String title;
 
+    @Enumerated(EnumType.ORDINAL)
     private Race race;
 
+    @Enumerated(EnumType.ORDINAL)
     private Profession profession;
 
+    @Column(name = "date", nullable = false)
     private Date birthday;
 
+    @Column(name = "banned", nullable = false)
     private Boolean banned;
 
+    @Column(name = "level",nullable = false)
     private Integer level;
 
     public Player() {
