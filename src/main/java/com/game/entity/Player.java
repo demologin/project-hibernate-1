@@ -1,23 +1,42 @@
 package com.game.entity;
 
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 
+@Entity
+@Table(schema = "rpg", name = "player")
+@NamedQuery(name = "player_playersCount", query = "select count(p) from Player p")
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
+    @Column(name = "name", nullable = false, length = 12)
     private String name;
 
+    @Column(name = "title", nullable = false, length = 30)
     private String title;
 
+    @Enumerated(EnumType.ORDINAL)
+    @Column(nullable = false)
     private Race race;
 
+    @Enumerated(EnumType.ORDINAL)
+    @Column(nullable = false)
     private Profession profession;
 
+    @Column(nullable = false)
+    @DateTimeFormat
     private Date birthday;
 
+    @Column(name = "banned", nullable = false)
     private Boolean banned;
 
+    @Column(name = "level",nullable = false)
     private Integer level;
 
     public Player() {
