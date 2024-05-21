@@ -1,23 +1,34 @@
 package com.game.entity;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
-
+@Entity
+@Table(name = "player", schema = "rpg")
+@org.hibernate.annotations.NamedQuery(name = "allCount", query = "from Player")
 public class Player {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_seq")
+    @SequenceGenerator(name = "player_seq", sequenceName = "player_seq", initialValue = 41, allocationSize=1)
+    @Column(name = "id",nullable = false)
     private Long id;
-
+    @Column(name = "name", unique = true, nullable = false, length = 12)
     private String name;
-
+    @Column(name = "title", nullable = false, length = 30)
     private String title;
-
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "race", nullable = false)
     private Race race;
-
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "profession", nullable = false)
     private Profession profession;
-
+    @Column(name = "birthday", nullable = false)
     private Date birthday;
-
+    @Column(name = "banned", nullable = false)
     private Boolean banned;
-
+    @Column(name = "level", nullable = false)
     private Integer level;
 
     public Player() {
