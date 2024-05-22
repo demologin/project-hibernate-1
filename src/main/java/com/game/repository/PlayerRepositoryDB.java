@@ -3,7 +3,7 @@ package com.game.repository;
 import com.game.entity.Player;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 import java.util.List;
 import java.util.Optional;
 
