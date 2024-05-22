@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="22-05-player-data" author="skovalinsky">
+        <insert tableName="player">
+            <column name="name">Ниус</column>
+            <column name="title">Приходящий Без Шума</column>
+            <column name="race">6</column>
+            <column name="profession">1</column>
+            <column name="birthday">2009-06-09 00:44:40.000000</column>
+            <column name="level">33</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Никрашш</column>
+            <column name="title">НайтВульф</column>
+            <column name="race">4</column>
+            <column name="profession">0</column>
+            <column name="birthday">2006-07-09 08:50:40.000000</column>
+            <column name="level">58</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Эззэссэль</column>
+            <column name="title">шипящая</column>
+            <column name="race">1</column>
+            <column name="profession">3</column>
+            <column name="birthday">2009-05-25 00:43:20.000000</column>
+            <column name="level">3</column>
+            <column name="banned">1</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Бэлан</column>
+            <column name="title">Тсе Раа</column>
+            <column name="race">1</column>
+            <column name="profession">1</column>
+            <column name="birthday">2009-05-03 22:20:40.000000</column>
+            <column name="level">29</column>
+            <column name="banned">1</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Элеонора</column>
+            <column name="title">Бабушка</column>
+            <column name="race">0</column>
+            <column name="profession">2</column>
+            <column name="birthday">2008-06-22 20:16:40.000000</column>
+            <column name="level">35</column>
+            <column name="banned">1</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Эман</column>
+            <column name="title">Ухастый Летун</column>
+            <column name="race">2</column>
+            <column name="profession">2</column>
+            <column name="birthday">2008-06-29 23:46:00.000000</column>
+            <column name="level">56</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Талан</column>
+            <column name="title">Рожденный в Бронксе</column>
+            <column name="race">3</column>
+            <column name="profession">1</column>
+            <column name="birthday">2008-08-04 15:35:00.000000</column>
+            <column name="level">36</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Арилан</column>
+            <column name="title">Благотворитель</column>
+            <column name="race">2</column>
+            <column name="profession">2</column>
+            <column name="birthday">2008-07-14 10:53:20.000000</column>
+            <column name="level">34</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Деракт</column>
+            <column name="title">Эльфёнок Красное Ухо</column>
+            <column name="race">2</column>
+            <column name="profession">1</column>
+            <column name="birthday">2008-07-03 03:08:40.000000</column>
+            <column name="level">55</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Архилл</column>
+            <column name="title">Смертоносный</column>
+            <column name="race">3</column>
+            <column name="profession">4</column>
+            <column name="birthday">2009-05-24 07:56:40.000000</column>
+            <column name="level">38</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Эндарион</column>
+            <column name="title">Маленький эльфенок</column>
+            <column name="race">2</column>
+            <column name="profession">7</column>
+            <column name="birthday">2008-08-24 23:52:00.000000</column>
+            <column name="level">45</column>
+            <column name="banned">0</column>
+        </insert>
+        <insert tableName="player">
+            <column name="name">Фаэрвин</column>
+            <column name="title">Темный Идеолог</column>
+            <column name="race">0</column>
+            <column name="profession">5</column>
+            <column name="birthday">2008-07-25 09:28:00.000000</column>
+            <column name="level">12</column>
+            <column name="banned">0</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
