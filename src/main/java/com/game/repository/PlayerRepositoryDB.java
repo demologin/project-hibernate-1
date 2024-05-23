@@ -3,8 +3,11 @@ package com.game.repository;
 import com.game.entity.Player;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PreDestroy;
@@ -19,9 +22,9 @@ public class PlayerRepositoryDB implements IPlayerRepository {
 
     public PlayerRepositoryDB() {
         Properties properties = new Properties();
-        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-        properties.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-        properties.put(Environment.URL, "jdbc:mysql://127.0.0.1:3306");
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+        properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+        properties.put(Environment.URL, "jdbc:mysql://127.0.0.1:3306/rpg");
         properties.put(Environment.USER, "root");
         properties.put(Environment.PASS, "MysqlRoot");
         properties.put(Environment.HBM2DDL_AUTO, "update");
@@ -34,8 +37,13 @@ public class PlayerRepositoryDB implements IPlayerRepository {
 
     @Override
     public List<Player> getAll(int pageNumber, int pageSize) {
-        Session session = sessionFactory.openSession();
-        return null;
+        try (Session session = sessionFactory.openSession()) {
+            NativeQuery<Player> query = session.createNativeQuery("select * from player", Player.class);
+            query.setFirstResult(pageNumber * pageSize);
+            query.setMaxResults(pageSize);
+            List<Player> players = query.list();
+            return players;
+        }
     }
 
     @Override
