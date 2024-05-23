@@ -1,6 +1,7 @@
 package com.game.repository;
 
 import com.game.entity.Player;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PreDestroy;
@@ -10,8 +11,11 @@ import java.util.Optional;
 @Repository(value = "db")
 public class PlayerRepositoryDB implements IPlayerRepository {
 
-    public PlayerRepositoryDB() {
+    private final SessionFactory sessionFactory;
 
+    public PlayerRepositoryDB(SessionFactory sessionFactory) {
+
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
