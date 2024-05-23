@@ -57,7 +57,12 @@ public class PlayerRepositoryDB implements IPlayerRepository {
 
     @Override
     public Player save(Player player) {
-        return null;
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.save(player);
+            transaction.commit();
+            return player;
+        }
     }
 
     @Override
