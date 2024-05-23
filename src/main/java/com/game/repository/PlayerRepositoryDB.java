@@ -11,6 +11,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PreDestroy;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
@@ -48,7 +49,10 @@ public class PlayerRepositoryDB implements IPlayerRepository {
 
     @Override
     public int getAllCount() {
-        return 0;
+        try (Session session = sessionFactory.openSession()) {
+            Query<Long> query = session.createNamedQuery("getAllCountNamedQuery", Long.class);
+            return Math.toIntExact(query.uniqueResult());
+        }
     }
 
     @Override
@@ -73,6 +77,6 @@ public class PlayerRepositoryDB implements IPlayerRepository {
 
     @PreDestroy
     public void beforeStop() {
-
+        sessionFactory.close();
     }
 }
