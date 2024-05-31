@@ -10,6 +10,7 @@ public class MyWebAppInit extends AbstractAnnotationConfigDispatcherServletIniti
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
+        LiquibaseInit.create();
     }
 
     @Override
