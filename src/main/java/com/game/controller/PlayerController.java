@@ -25,6 +25,7 @@ public class PlayerController {
 
     public PlayerController(@Autowired PlayerService playerService) {
         this.playerService = playerService;
+//        LiquibaseRunner.init();
     }
 
     @GetMapping()
