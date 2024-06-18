@@ -73,6 +73,7 @@ public class PlayerRepositoryDB implements IPlayerRepository {
             session.update(player);
             updatedPlayer = session.get(Player.class, player.getId());
             tx.commit();
+
         }
         return updatedPlayer;
     }
