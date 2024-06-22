@@ -1,7 +1,7 @@
 package com.game.repository;
 
 import com.game.entity.Player;
-import com.game.tools.KeysData;
+import com.game.tools.KeysValue;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -18,15 +18,15 @@ import java.util.Properties;
 @Repository(value = "db")
 public class PlayerRepositoryDB implements IPlayerRepository {
     private SessionFactory sessionFactory;
-    private KeysData keyData = new KeysData();
+    private KeysValue keyData = new KeysValue();
 
     public PlayerRepositoryDB() {
 
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
-        properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-        properties.put(Environment.URL, "jdbc:mysql://" + keyData.DATA_HOST_NAME + ":3306/rpg");
-        properties.put(Environment.USER, "root");
+        properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
+        properties.put(Environment.URL, "jdbc:p6spy:mysql://" + keyData.DATA_HOST_NAME + ":3306/rpg");
+        properties.put(Environment.USER, keyData.DATA_USER);
         properties.put(Environment.PASS, keyData.DATA_USER_PASS);
         properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         properties.put(Environment.HBM2DDL_AUTO, "update");
