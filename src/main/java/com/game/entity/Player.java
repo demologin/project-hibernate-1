@@ -9,7 +9,7 @@ import java.util.Date;
 @NamedQuery(name = "getAllCount", query = "select count(p) from Player p")
 public class Player {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
 
