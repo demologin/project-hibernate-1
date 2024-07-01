@@ -44,6 +44,7 @@ public class PlayerRepositoryDB implements IPlayerRepository {
             NativeQuery<Player> query = session.createNativeQuery("SELECT * FROM rpg.player", Player.class);
             query.setFirstResult(pageNumber * pageSize);
             query.setMaxResults(pageSize);
+            List<Player> players = query.list();
             return query.list();
         }
     }
@@ -87,7 +88,8 @@ public class PlayerRepositoryDB implements IPlayerRepository {
     @Override
     public Optional<Player> findById(long id) {
         try(Session session = sessionFactory.openSession()) {
-            return Optional.ofNullable(session.get(Player.class, id));
+            Player player = session.get(Player.class, id);
+            return Optional.ofNullable(player);
         }
     }
 
